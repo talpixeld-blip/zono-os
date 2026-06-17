@@ -1,0 +1,25 @@
+import type { ReactNode } from "react";
+import { Sidebar } from "./Sidebar";
+import { Header } from "./Header";
+import { MobileNav } from "./MobileNav";
+
+/**
+ * App frame: RTL slim sidebar (right/start side) + header + scrolling main +
+ * mobile bottom nav. Content is constrained to a comfortable max width.
+ */
+export function DashboardShell({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex min-h-screen">
+      <Sidebar />
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Header />
+        <main className="flex-1 px-4 pb-28 pt-6 sm:px-6 lg:px-8 lg:pb-12">
+          <div className="mx-auto flex max-w-[1320px] flex-col gap-10">
+            {children}
+          </div>
+        </main>
+      </div>
+      <MobileNav />
+    </div>
+  );
+}
